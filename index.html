@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>E-PORTFOLIO</title>
+
+<style>
+
+body, html {background-repeat:no-repeat;
+background-size:cover; 
+height:100%; 
+margin:0;}
+
+img {display: block;
+margin: auto;
+width: 50%;}
+
+.tablink {background-image: url('images.jfif');
+color: white;
+float: left;
+border: none;
+outline: none;
+cursor: pointer;
+padding: 14px 16px;
+font-size: 35px;
+width: 25%;
+transition: all 0.3s ease;
+font-family: 'Impact', 'Arial Black', sans-serif;}
+
+#HomeTab {background-image: url('images.jfif');
+background-repeat:no-repeat;
+background-size:cover;
+color: #ffcc00;
+text-shadow: 1px 1px 3px #000;
+box-shadow: 0 0 10px #990000;
+border: none;
+outline: none;
+cursor: pointer;
+transition: all 0.3s ease;}
+
+#HomeTab:hover {color: #b30000;
+box-shadow: 0 0 20px #ffff00, 0 0 10px #ffcc00;
+text-shadow: 0 0 5px #b30000;}
+
+#AboutMeTab {background-image: url('blackflash.avif');
+background-repeat: no-repeat;
+background-size: cover;       
+background-position: center;  
+color:#DF1F2D;
+text-shadow: 1px 1px 4px  #760c10;
+box-shadow: 0 0 10px #B4202E;
+border: none;
+outline: none;
+cursor: pointer;
+padding: 14px 16px;
+width: 25%;
+font-family: 'Impact', 'Arial Black', sans-serif;
+transition: all 0.3s ease;}
+
+#AboutMeTab:hover {color:#ffcc00;
+box-shadow: 0 0 20px #b30000, 0 0 10px #b30000;
+text-shadow: 0 0 5px #ffcc00;}
+
+#ICTTLETab {
+    background-image: url('ba.jfif'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #ffcc00; 
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    width: 25%;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    transition: all 0.3s ease;}
+
+#ICTTLETab:hover {color: #b30000;
+box-shadow: 0 0 20px #ffff00, 0 0 10px #ffcc00;
+text-shadow: 0 0 5px #b30000;}
+
+#AralingPanlipunanTab { background-image: url('bf.jpg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #DF1F2D; 
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    width: 25%;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    transition: all 0.3s ease;}
+
+#AralingPanlipunanTab:hover {color:#ffcc00;
+box-shadow: 0 0 20px #b30000, 0 0 10px #b30000;
+text-shadow: 0 0 5px #ffcc00;}
+
+.tabcontent {color: white;
+display: none;
+padding: 100px 20px;
+min-height: 100vh;
+box-sizing: border-box;}
+
+#Home {background-image: url('jl.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;}
+
+#AboutMe {background-image: url('aboutme.jfif');
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;}
+
+#ICTTLE {background-image: url('Flash.jfif');
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;}
+
+#AralingPanlipunan {background-image: url('ap1.jfif');
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;}
+
+.vertical-tab {
+display: flex;
+flex-direction: column;
+width: 200px;
+background-color: rgba(0, 0, 0, 0.7);
+padding-top: 20px;
+box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+border-radius: 10px 0 0 10px;}
+
+.vertical-tablink {
+background-color: #000;
+color: #FFD700;
+font-family: 'Impact', 'Arial Black', sans-serif;
+border: none;
+outline: none;
+text-align: left;
+padding: 15px 20px;
+cursor: pointer;
+transition: 0.3s;
+font-size: 20px;
+border-bottom: 1px solid #333;}
+
+.vertical-tablink:hover {
+background-color: #b30000;
+color: #fff700;
+text-shadow: 0 0 5px #fff700;}
+
+.vertical-tabcontent {display: none;
+animation: fadeEffect 0.5s;
+border: 3px solid #FFD700;
+border-radius: 10px;
+padding: 20px;
+background-color: rgba(0, 0, 0, 0.5); 
+box-shadow: 0 0 10px #FF0000;}
+
+.accordion {background-color: #990000;
+color: #fff;
+cursor: pointer;
+padding: 20px;
+width: 100%;
+text-align: left;
+border: none;
+outline: none;
+font-size: 30px;
+transition: 0.4s;
+font-family: 'Arial Black', sans-serif;
+margin-top: 10px;
+border-radius: 5px;}
+
+.active, .accordion:hover {background-color: #b30000;}
+
+.panel {padding: 0 20px 20px 20px;
+background-color: rgba(0,0,0,0.7);
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease-out;
+border-radius: 0 0 10px 10px;
+color: white;
+font-size: 22px;
+line-height: 1.6;}
+
+.panel img { width: 48%;
+margin: 1%;
+border-radius: 10px;
+box-shadow: 0 0 10px #FFD700;
+max-height: 250px;}
+
+@keyframes fadeEffect {from {opacity: 0;}to {opacity: 1;}
+
+</style>
+
+<script>
+function openPage(pageName, elmnt, color) {var i, tabcontent, tablinks;
+tabcontent = document.getElementsByClassName("tabcontent");
+for (i = 0; i < tabcontent.length; i++) {
+tabcontent[i].style.display = "none";}
+
+tablinks = document.getElementsByClassName("tablink");
+for (i = 0; i < tablinks.length; i++) {
+tablinks[i].style.backgroundColor = "";}
+
+document.getElementById(pageName).style.display = "block";
+if (elmnt) elmnt.style.backgroundColor = color;}
+
+window.onload = function () {
+var defaultBtn = document.querySelector(".defaultOpen");
+if (defaultBtn) defaultBtn.click();}
+
+function openVerticalTab(tabName) {
+var i, x;
+x = document.getElementsByClassName("vertical-tabcontent");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";}
+document.getElementById(tabName).style.display = "block";}
+</script>
+</head>
+
+<body>
+
+<button class="tablink defaultOpen" id="HomeTab" onclick="openPage('Home', this, '')">Home</button>
+
+<button class="tablink" id="AboutMeTab" onclick="openPage('AboutMe', this, '')">About Me!</button>
+
+<button class="tablink" id="ICTTLETab" onclick="openPage('ICTTLE', this, '')">TLE/ICT</button>
+
+<button class="tablink" id="AralingPanlipunanTab" onclick="openPage('AralingPanlipunan', this, '')">ARALING PANLIPUNAN</button>
+
+<div id="Home" class="tabcontent">
+
+<h3 style="text-align: center;
+font-size: 75px;
+color: #ffcc00; 
+text-shadow: 2px 2px 8px red, 0 0 15px #ff0000;
+font-family: 'Impact', 'Arial Black', sans-serif;">ROGUE FILES: 19 </h3>
+
+<h2 style="text-align: center;
+font-size: 50px;
+color: #ffcc00; 
+text-shadow: 2px 2px 8px red, 0 0 15px #ff0000;
+font-family: 'Impact', 'Arial Black', sans-serif;">CODENAME: UNIQUO </h2>
+
+<img src="ROGUE FILE.jpg" alt="UNIQUO" style="width: 25%; border-radius: 50%; display: block; margin: 30px auto;">
+
+<p style="font-family: 'Bookman Old Style', serif;
+text-align: center;
+font-size: 40px;
+color: #ffffff;
+text-shadow: 1px 1px 5px red;">"Time is a game, and I’m always three moves ahead." </p>
+
+</div>
+
+<div id="AboutMe" class="tabcontent">
+<img src="uniquo.jfif" alt="Juan Uniquo M. De Asis" style="display: block; margin: 20px auto; width: 200px; border-radius: 50%; box-shadow: 0 0 15px #FF0000;">
+<h3 style="text-align: center;
+font-size: 60px;
+font-family: 'Impact', 'Arial Black', sans-serif;
+color: #FFD700;
+text-shadow: 2px 2px 8px #FF0000, 0 0 15px #FF0000;">
+⚡ WHO AM I??? ⚡
+</h3>
+
+<p style="font-family: 'Comic Sans MS', cursive, sans-serif;
+font-size: 28px;
+color: #FFD700;
+text-shadow: 1px 1px 5px #FF0000;
+text-align: center;
+max-width: 800px;
+margin: auto;
+background-color: rgba(0, 0, 0, 0.6);
+padding: 20px;
+border-radius: 15px;
+box-shadow: 0 0 15px #FF0000;">
+      
+Hi! I'm Juan Uniquo M. De Asis, I'm a huge fan of DC Comics, especially <strong style="color: #FF0000;">The Flash</strong>! 🏃‍♂️💨 <br><br>
+I’m 14 years old and was born on <strong style="color: #FFCC00;">January 19, 2011</strong>, at Well Family Maternity Clinic in Las Piñas City. Ever since I was young, I’ve admired heroes who use their powers to protect others. <br><br>
+The Flash's <strong style="color: #FF0000;">speed</strong>, <strong style="color: #FF0000;">courage</strong>, and <strong style="color: #FF0000;">determination</strong> always push me to go further and stay ahead in life. <br><br>
+I enjoy reading comics, watching action-packed shows, and spending time with friends. Just like The Flash, I believe that no matter how fast life moves, it's important to keep running toward your goals. I also like doing sports, as they keep me physically active, because of that, I play many sports, like Basketball, Badminton and even Athletics, in which I got inspired to do because of me being a huge Flash fan, because, what does The Flash do? Run. 🌀⚡<br><br>
+
+<em style="color: #FFCC00; text-shadow: 0 0 15px #FF0000;">
+
+"Sometimes you have to run before you can walk."
+— Barry Allen (The Flash)
+</em>
+</p>
+
+<div style="display: flex; flex-wrap: wrap; margin-top: 50px;">
+
+<div class="vertical-tab">
+
+<button class="vertical-tablink" onclick="openVerticalTab('Family')">👨‍👩‍👧‍👦 My Family</button>
+
+<button class="vertical-tablink" onclick="openVerticalTab('Friends')">🧑‍🤝‍🧑 My Friends</button>
+</div>
+
+<div style="flex: 1; padding: 30px;" class="vertical-tabcontent-area">
+
+<div id="Family" class="vertical-tabcontent">
+
+<h3 style="color: #FFD700; font-size: 40px; text-shadow: 1px 1px 5px red;">My Family</h3>
+
+<p style="color: white; font-size: 30px; line-height: 1.6;">
+
+ I come from a small but incredibly strong and loving family. I'm the only child of my father, and that has made our relationship even more meaningful. With no siblings, I’ve grown up learning the value of quality time, mutual respect, and understanding. <br><br>
+
+My parents are like my personal heroes, always ready to support me through anything. They might not have super speed like The Flash, but they have something even better: unconditional love, patience, and wisdom. They're the reason I stay grounded and motivated every day.<br><br>
+
+<img src="fam.jfif" alt="My Whole Family" style="display: block; margin: 20px auto; width: 50%; border-radius: 15px; box-shadow: 0 0 15px #FFD700;">
+
+Even though our family may be small in number, we're big in heart. We celebrate simple moments, dinners, talks, laughs, and we always have each other's backs. Our bond is fast and unbreakable, just like lightning ⚡.<br><br>
+
+My whole family has shaped me into the person I am today, focused, determined, and always ready to run toward my dreams.
+
+</p>
+</div>
+
+<div id="Friends" class="vertical-tabcontent">
+<h3 style="color: #FFD700; font-size: 40px; text-shadow: 1px 1px 5px red;">My Friends</h3>
+
+<p style="color: white; font-size: 30px; line-height: 1.6;">
+My friends are like my second family, the people I laugh with, learn from, and grow alongside. Whether we're working on school projects, playing games, or just talking about life, they bring energy and joy to my world.<br><br>
+
+One of the biggest parts of my friend life is a group I belong to called <strong style="color: #FF0000;">BLKNS</strong> (which stands for "Balkans"). It originally started as a small circle called <strong style="color: #FFD700;">BBBoys</strong>, but as more amazing people joined in, we evolved and became something even stronger, a team with real friendship and loyalty at its core. Just like Team Flash, every member brings something unique to the table, and together, we’re unstoppable. ⚡🛡️<br><br>
+
+<img src="BLKNS.png" alt="BLKNS Group Photo" style="display: block; margin: 20px auto; width: 50%; border-radius: 15px; box-shadow: 0 0 15px #FFD700;">
+
+
+We share inside jokes, support each other during tough times, and always have each other's backs. It’s more than just a group, it’s a brotherhood built on trust and memories. <br><br>
+
+Also… I’ve got to admit, there’s someone really special I admire. 😊 They inspire me in ways that are hard to explain, and even just being around them makes my day a lot brighter. It’s like how Barry Allen always had Iris, someone who keeps him grounded, focused, and full of hope. 🌟<br><br>
+
+At the end of the day, my friends remind me that you don’t need super speed to feel like a hero, sometimes, all it takes is having the right people running beside you.
+</p>
+
+<h3 style="color: #FFD700; font-size: 40px; text-shadow: 1px 1px 5px red;">HomoSapiens (Zepiens)</h3>
+
+<p style="color: white; font-size: 30px; line-height: 1.6;">
+The HomoSapiens (Zepiens) is a circle of friends that started from the most unlikely of places: our classroom. We were once all classmates, sharing the same room and the same experiences. From the very first day, we clicked instantly, bonded over shared interests, humor, and our passion for thinking outside the box.<br><br>
+
+The Zepiens were formed in a room full of potential, where everyone brought something unique to the table. Whether it was our quirks, talents, or ideas, we were a group of dreamers who didn't just settle for the ordinary. We challenged each other, grew together, and became more than just classmates; we became a close-knit team, much like The Flash and his allies.<br><br>
+
+    <img src="ZEPZEP.jpg" alt="HomoSapiens Group Photo" style="display: block; margin: 20px auto; width: 50%; border-radius: 15px; box-shadow: 0 0 15px #FFD700;">
+    
+Even though we started in a classroom, our bond is far beyond school. We remain united by the friendship and creativity we nurtured during those days. We still meet up, share ideas, and support each other no matter where life takes us. The Zepiens are a reminder that some of the best teams are built from people who were once strangers, then became classmates, and hopefulle, lifelong friends.<br><br>
+
+Just like The Flash and his team, the Zepiens remind me that no matter where we start, the journey together is what truly matters. We may have started in one room, but our potential is limitless. ⚡💡 <br>
+
+<video width="620" height="340" controls>
+  <source src="Zep!.mp4" type="video/mp4">
+
+</video>
+
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="ICTTLE" class="tabcontent">
+ <h2 style="color: #FFD700;
+ text-align: center;
+ font-size: 40px;">💻 ICT / TLE Lessons</h2> 
+
+
+<div style="display: flex; margin-top: 30px;">
+  <div class="vertical-tab">
+    <button class="vertical-tablink" onmouseover="openVerticalTab('Lesson1')">Lesson 1: CSS</button>
+    <button class="vertical-tablink" onmouseover="openVerticalTab('Lesson2')">Lesson 2: Style Sheet</button>
+    <button class="vertical-tablink" onmouseover="openVerticalTab('Lesson3')">Lesson 3: Display Property</button>
+    <button class="vertical-tablink" onmouseover="openVerticalTab('Lesson4')">Lesson 4: CSS Rule</button>
+    <button class="vertical-tablink" onmouseover="openVerticalTab('Lesson5')">Lesson 5: CSS Selectors</button>
+    <button class="vertical-tablink" onmouseover="openVerticalTab('Lesson6')">Lesson 6: Dimensions & Pseudo-Classes</button>
+    <button class="vertical-tablink" onmouseover="openVerticalTab('ACTIVITIES')">ACTIVITIES</button>
+  </div>
+ 
+
+
+<div id="ACTIVITIES" class="tabcontent">
+ <h2 style="color: #FFD700; text-align: center; font-size: 40px;">📅 Activities</h2> 
+
+
+<div style="display: flex; margin-top: 30px;">
+  <div class="vertical-tab">
+    <button class="vertical-tablink" onmouseover="openVerticalTab('BuwanngWika')">Buwan ng Wika</button>
+    <button class="vertical-tablink" onmouseover="openVerticalTab('Intrams')">Intrams</button>
+    <button class="vertical-tablink" onmouseover="openVerticalTab('Science')">Science</button>
+    <button class="vertical-tablink" onmouseover="openVerticalTab('AP')">AP</button>
+    <button class="vertical-tablink" onmouseover="openVerticalTab('TeachersDay')">Teacher's Day</button>
+    <button class="vertical-tablink" onmouseover="openVerticalTab('ClusterMeet')">Cluster Meet</button>
+  </div>
+ </div>
+</div>
+
+  <div id="BuwanngWika" class="vertical-tabcontent">
+    <h3 style="color: #FFD700;">Buwan ng Wika</h3>
+    <p style="color: white; font-size: 22px;">Reflection Questions:</p>
+    
+    <ul style="color: white; font-size: 18px;">
+        <li><strong>What is the most important thing I have learned from the event?</strong><br>
+        I have learned the importance of preserving our national language and culture. It highlighted the significance of Filipino as a tool for unity and identity.</li>
+        
+        <li><strong>How can I apply what I have learned in real-life situations?</strong><br>
+        I can apply it by using Filipino more often in everyday conversations and encouraging others to appreciate and respect our language.</li>
+        
+        <li><strong>Did I actively participate in the event? How?</strong><br>
+        Yes, I actively participated by joining the cultural activities, such as the spoken poetry contest, and attending the Filipino-themed discussions.</li>
+        
+        <li><strong>If I were to teach this topic/subject to a classmate, how would I explain it?</strong><br>
+        I would explain that Buwan ng Wika celebrates the Filipino language and culture. I would emphasize the value of using Filipino to communicate better and strengthen our national identity.</li>
+        
+        <li><strong>Why is it important to have an event (Buwan ng Wika)?</strong><br>
+        It is important because it encourages pride in our culture, promotes the use of the Filipino language, and educates younger generations about the importance of their heritage.</li>
+    </ul>
+    <img src="bnw1.jpg" alt="Buwan ng Wika Image 1" style="width: 100%; height: auto; margin-top: 20px;">
+<p> credits to: Ang Paham </p>
+    <img src="bnw2.jpg" alt="Buwan ng Wika Image 2" style="width: 100%; height: auto; margin-top: 20px;">
+<p> credits to: Ang Paham </p> <p> credits to: Kiel Reyes </p>
+    <video width="100%" controls> 
+      <source src="filipino.mp4" type="video/mp4"> 
+    </video>
+  </div>
+
+  <div id="Intrams" class="vertical-tabcontent">
+    <h3 style="color: #FFD700;">Intrams</h3>
+    <p style="color: white; font-size: 22px;">Reflection Questions:</p>
+    
+    <ul style="color: white; font-size: 18px;">
+        <li><strong>What is the most important thing I have learned from the event?</strong><br>
+        I have learned teamwork and sportsmanship. Intrams taught me the importance of supporting teammates and playing fairly.</li>
+        
+        <li><strong>How can I apply what I have learned in real-life situations?</strong><br>
+        I can apply it by collaborating better with others in group projects, fostering good relationships, and maintaining integrity in competitive situations.</li>
+        
+        <li><strong>Did I actively participate in the event? How?</strong><br>
+        Yes, I participated by playing in the basketball tournament and cheering for my friends during their events.</li>
+        
+        <li><strong>If I were to teach this topic/subject to a classmate, how would I explain it?</strong><br>
+        I would explain Intrams as a school event where we compete in various sports. It promotes physical fitness, unity, and fun, while also teaching valuable lessons on teamwork.</li>
+        
+        <li><strong>Why is it important to have an event (Intrams)?</strong><br>
+        It is important because it encourages physical activity, fosters camaraderie, and helps develop healthy competition among students.</li>
+    </ul>
+    <img src="intrams1.jpg" alt="Intrams Image 1" style="width: 100%; height: auto; margin-top: 20px;"> <p> credits to: Jade Imperial</p>
+    <img src="intrams2.jpg" alt="Intrams Image 2" style="width: 100%; height: auto; margin-top: 20px;"> <p>credits to: Jade Imperial</p> <p> credits to: Nicole Kierulf </p>
+    <video width="100%" controls>
+      <source src="intrams.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div id="Science" class="vertical-tabcontent">
+    <h3 style="color: #FFD700;">Science Month</h3>
+    <p style="color: white; font-size: 22px;">Reflection Questions:</p>
+    
+    <ul style="color: white; font-size: 18px;">
+        <li><strong>What is the most important thing I have learned from the event?</strong><br>
+        Even though I didn’t participate fully, I learned how much science can be applied to real-world problems. I saw my classmates getting creative with experiments and projects, and it made me realize how exciting and impactful science can be.</li>
+        
+        <li><strong>How can I apply what I have learned in real-life situations?</strong><br>
+        I can apply the scientific mindset of curiosity and experimentation in my daily life. Whenever I face a problem, I can think more critically and test different solutions to see what works best.</li>
+        
+        <li><strong>Did I actively participate in the event? How?</strong><br>
+        I didn’t participate as much as I would’ve liked to, but I did attend the exhibits and learned from the projects that others presented. I also discussed some of the ideas with my friends and teachers.</li>
+        
+        <li><strong>If I were to teach this topic/subject to a classmate, how would I explain it?</strong><br>
+        I would explain that Science Month is an opportunity to explore and understand the world through experiments and discovery. Even if you’re not actively involved, it’s a chance to appreciate how science can change our lives.</li>
+        
+        <li><strong>Why is it important to have an event (Science Month)?</strong><br>
+        It’s important because it encourages us to think critically, ask questions, and find solutions to real-world challenges. Even if we don’t participate directly, it helps ignite an interest in science.</li>
+    </ul>
+    <img src="scimonth1.jpg" alt="Science Image 1" style="width: 100%; height: auto; margin-top: 20px;"> <p> credits to: Ang Paham </p>
+    <img src="scimonth2.jpg" alt="Science Image 2" style="width: 100%; height: auto; margin-top: 20px;"> <p> credits to: Ang Paham </p>
+    <video width="100%" controls>
+      <source src="sci.mp4" type="video/mp4"> 
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+ <div id="AP" class="vertical-tabcontent">
+    <h3 style="color: #FFD700;">A.P. Month</h3>
+    <p style="color: white; font-size: 22px;">Reflection Questions:</p>
+    
+    <ul style="color: white; font-size: 18px;">
+        <li><strong>What is the most important thing I have learned from the event?</strong><br>
+        I learned that consistent effort and discipline are key to success. Although I didn’t engage fully, I saw how others used the time wisely for studying and preparing, and it inspired me to be more focused on my academic goals in the future.</li>
+        
+        <li><strong>How can I apply what I have learned in real-life situations?</strong><br>
+        I can apply this by planning ahead, setting realistic academic goals, and sticking to a routine that allows me to manage my time better. This will help me achieve personal and professional goals later on.</li>
+        
+        <li><strong>Did I actively participate in the event? How?</strong><br>
+        I didn’t participate as much in A.P. Month, but I did observe my peers preparing for quizzes, which made me realize the importance of academic discipline.</li>
+        
+        <li><strong>If I were to teach this topic/subject to a classmate, how would I explain it?</strong><br>
+        I would explain that A.P. Month is a time to focus on improving academic performance through discipline, time management. It’s a chance to get better at organizing and prioritizing our studies.</li>
+        
+        <li><strong>Why is it important to have an event (A.P. Month)?</strong><br>
+        It’s important because it encourages us to develop strong academic habits, motivates us to stay on top of our studies, and prepares us for future challenges in school and beyond.</li>
+    </ul>
+    <img src="pic1.jpg" alt="AP Image 1" style="width: 100%; height: auto; margin-top: 20px;"> <p> credits to: Ang Paham </p>
+    <img src="pic2.jpg" alt="AP Image 2" style="width: 100%; height: auto; margin-top: 20px;"> <p> credits to: Ang Paham </p> <p> credits to: Nicole Kierulf </p>
+    <video width="100%" controls>
+      <source src="ap.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+ <div id="TeachersDay" class="vertical-tabcontent">
+    <h3 style="color: #FFD700;">Teacher's Day</h3>
+    <p style="color: white; font-size: 22px;">Reflection Questions:</p>
+    
+    <ul style="color: white; font-size: 18px;">
+        <li><strong>What is the most important thing I have learned from the event?</strong><br>
+        I learned to appreciate the hard work and dedication of teachers. Teacher’s Day reminded me of the role they play in shaping our futures.</li>
+        
+        <li><strong>How can I apply what I have learned in real-life situations?</strong><br>
+        I can apply it by showing respect and gratitude to teachers and mentors, and by valuing the guidance they provide.</li>
+        
+        <li><strong>Did I actively participate in the event? How?</strong><br>
+        Yes, I participated by preparing a small program, giving a speech, and helping organize the celebration.</li>
+        
+        <li><strong>If I were to teach this topic/subject to a classmate, how would I explain it?</strong><br>
+        I would explain that Teacher’s Day is a day to honor and thank our teachers for their patience, support, and the knowledge they share with us.</li>
+        
+        <li><strong>Why is it important to have an event (Teacher's Day)?</strong><br>
+        It is important because it encourages us to recognize and appreciate the contributions of teachers in our learning journey.</li>
+    </ul>
+    <img src="td1.jpg" alt="Teacher's Day 1" style="width: 100%; height: auto; margin-top: 20px;"> <p> credits to: Ang Paham </p>
+    <img src="td2.jpg" alt="Teacher's Day 2" style="width: 100%; height: auto; margin-top: 20px;"> <p> credits to: Ang Paham </p> <p> credits to: GRADE 9 - FAITH! </p>
+    <video width="100%" controls>
+      <source src="td.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+ <div id="ClusterMeet" class="vertical-tabcontent">
+    <h3 style="color: #FFD700;">Cluster Meet</h3>
+    <p style="color: white; font-size: 22px;">Reflection Questions:</p>
+    
+    <ul style="color: white; font-size: 18px;">
+        <li><strong>What is the most important thing I have learned from the event?</strong><br>
+        I learned about the importance of cooperation and representing my school well. The Cluster Meet taught me to work with others and be proud of our team spirit.</li>
+        
+        <li><strong>How can I apply what I have learned in real-life situations?</strong><br>
+        I can apply it by collaborating with peers from different groups, respecting others’ strengths, and always aiming to do my best.</li>
+        
+        <li><strong>Did I actively participate in the event? How?</strong><br>
+        Yes, I participated by competing in events and encouraging my fellow students throughout the meet.</li>
+        
+        <li><strong>If I were to teach this topic/subject to a classmate, how would I explain it?</strong><br>
+        I would explain that the Cluster Meet is a competition among schools to promote teamwork, sportsmanship, and school pride.</li>
+        
+        <li><strong>Why is it important to have an event (Cluster Meet)?</strong><br>
+        It is important because it builds connections between schools, encourages healthy competition, and helps develop social and athletic skills.</li>
+    </ul>
+    <img src="cluster meet1.jpg" alt="Cluster Image 1" style="width: 100%; height: auto; margin-top: 20px;"> <p> credits to: Ang Paham </p>
+    <img src="cluster meet2.jpg" alt="Cluster Image 2" style="width: 100%; height: auto; margin-top: 20px;"> <p> credits to: Ang Paham </p> <p> credits to: Nicole Kierulf </p>
+    <video width="100%" controls>
+      <source src="cluster.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+
+    <div id="Lesson1" class="vertical-tabcontent">
+      <h3 style="color: #FFD700;">Lesson 1: What is CSS?</h3>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        <strong>CSS (Cascading Style Sheets)</strong> is used to style and design webpages by controlling how HTML elements appear. 
+        It separates structure (HTML) from design (CSS), making websites easier to maintain, update, and beautify.
+        <br><br>
+        <strong>Benefits:</strong>
+        <ul style="color: #FFD700;">
+          <li>Saves time – styles can be reused across pages</li>
+          <li>Improves consistency and maintainability</li>
+          <li>Enables responsive and accessible design</li>
+          <li>Enhances visual presentation (colors, layout, fonts)</li>
+        </ul>
+        <br>
+        <strong>Webpage Layers:</strong>
+        <ol style="color: #FFD700;">
+          <li><strong>Content Layer</strong> – HTML structure (text, images, media)</li>
+          <li><strong>Presentation Layer</strong> – CSS styling and layout</li>
+          <li><strong>Behavior Layer</strong> – JavaScript interactivity</li>
+        </ol>
+        <br>
+        <strong>Example:</strong>
+        <code style="display: block; margin-top: 10px; color: lightgreen;">p { color: red; }</code>
+        <code style="display: block; color: lightgreen;">.highlight { background-color: yellow; }</code>
+      </p>
+    </div>
+
+    
+    <div id="Lesson2" class="vertical-tabcontent">
+      <h3 style="color: #FFD700;">Lesson 2: CSS Syntax and Structure</h3>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        CSS consists of <strong>rules</strong> that tell the browser how to style HTML elements. Each rule is made up of a <strong>selector</strong> and a <strong>declaration block</strong>.
+        <br><br>
+        <strong>CSS Rule Structure:</strong>
+        <ul style="color: #FFD700;">
+          <li><strong>Selector</strong> – specifies the HTML element(s) to style (e.g., <code>p</code>, <code>.class</code>, <code>#id</code>)</li>
+          <li><strong>Declaration Block</strong> – wrapped in curly braces <code>{ }</code> containing one or more declarations</li>
+          <li><strong>Declaration</strong> – property and value pairs that define the style, separated by colons and ended with semicolons, e.g. <code>color: red;</code></li>
+        </ul>
+        <br>
+        <strong>Example of a CSS Rule:</strong>
+        <code style="display: block; margin-top: 10px; color: lightgreen;">
+          p {<br>&nbsp;&nbsp;color: blue;<br>&nbsp;&nbsp;font-size: 18px;<br>}
+        </code>
+        <br>
+        <strong>Key CSS Components:</strong>
+        <ul style="color: #FFD700;">
+          <li><code>{ }</code> – curly braces group declarations for a selector</li>
+          <li><code>:</code> – separates property and value</li>
+          <li><code>;</code> – ends each declaration</li>
+          <li>Selectors can target elements by type, class, or id</li>
+          <li>Declarations define what style changes to make</li>
+        </ul>
+        <br>
+        <strong>Summary:</strong> CSS syntax is straightforward once you remember the pattern: <em>selector { property: value; }</em> — used repeatedly to style webpages.
+      </p>
+    </div>
+
+  
+    <div id="Lesson3" class="vertical-tabcontent">
+      <h3 style="color: #FFD700;">Lesson 3: Display Property</h3>
+      <p style="color: white; font-size: 22px;">
+        The <strong>display</strong> property controls how an element appears on the page.
+        <br><br>
+        Common values include:
+        <ul style="color: #FFD700;">
+          <li><code>block</code>: starts on a new line</li>
+          <li><code>inline</code>: stays on the same line</li>
+          <li><code>none</code>: hides the element</li>
+        </ul>
+        <br>
+        <strong>Examples:</strong>
+        <strong>Block display:</strong>
+        <code> div {<br> display: block;<br> width: 100%;<br> background-color: lightgray;<br>} </code>
+        <br>
+        <strong>Inline display:</strong>
+        <code> a {<br> display: inline;<br> color: blue;<br>} </code>
+        <br>
+        <strong>None display:</strong>
+        <code> .hidden {<br> display: none;<br>} </code>
+        <br>
+        <strong>Summary:</strong> The <code>display</code> property is essential in controlling the layout and behavior of HTML elements. Block-level elements create new lines, inline elements do not, and display set to none removes the element from the page layout entirely.
+      </p>
+    </div>
+
+ 
+    <div id="Lesson4" class="vertical-tabcontent">
+      <h3 style="color: #FFD700;">Lesson 4: CSS Rule</h3>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        A CSS rule has two main parts: a <strong>selector</strong>, and one or more lists of <strong>style declarations</strong>.
+        <br><br>
+        <strong>Basic Format of a CSS Style Rule:</strong>
+        <strong>For Inline Style Rule:</strong>
+        <code>&lt;tag style="style declaration"&gt;</code>
+        <br> 
+        <strong>For Document-Level and External Style Sheets:</strong>
+        <code>selector {style declarations}</code>
+        <br><br>
+        <strong>Example:</strong>
+        <code> p {<br> color: blue;<br> font-size: 18px;<br>} </code>
+        <br>
+        <strong>Summary:</strong> CSS rules define how HTML elements should be styled. The basic structure consists of a <strong>selector</strong> and a <strong>declaration block</strong>. Each declaration defines a specific style for the selected element(s).
+      </p>
+    </div>
+
+   
+    <div id="Lesson5" class="vertical-tabcontent">
+      <h3 style="color: #FFD700;">Lesson 5: CSS Selectors</h3>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        CSS selectors are used to “find” or “select” the HTML elements that you want to style.
+        <br><br>
+        CSS selectors are divided into six types:
+        <ol style="color: #FFD700;">
+          <li>Class selector</li>
+          <li>Element selector or Tag selector</li>
+          <li>ID selector</li>
+          <li>Universal selector</li>
+          <li>Group selector</li>
+          <li>Attribute selector</li>
+        </ol>
+      </p>
+      <h4 style="color: #FFD700;">Element Selector</h4>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        The <strong>element selector</strong> selects HTML elements (like <code>p</code>, <code>div</code>, <code>h1</code>, etc.) and applies CSS to them.
+      </p>
+      <h4 style="color: #FFD700;">ID Selector</h4>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        The <strong>ID selector</strong> is used to style a unique element on the page, typically in cases such as page titles or navigation sections.
+      </p>
+      <h4 style="color: #FFD700;">Universal Selector</h4>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        The <strong>universal selector</strong> selects every single HTML element on the page. It is represented by the <code>*</code> symbol.
+      </p>
+      <h4 style="color: #FFD700;">Group Selector</h4>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        The <strong>group selector</strong> allows you to select multiple elements and apply the same style to all of them.
+      </p>
+      <h4 style="color: #FFD700;">Attribute Selector</h4>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        The <strong>attribute selector</strong> selects elements based on specific attribute values. The syntax is <code>Element[attribute]</code>.
+      </p>
+      <h4 style="color: #FFD700;">Summary:</h4>
+      <p style="color: white; font-size: 22px;">
+        CSS selectors are powerful tools to select and style specific HTML elements. Whether you're applying styles to a specific tag, using unique IDs, selecting elements by their attributes, or grouping multiple elements, CSS selectors provide flexibility and control in styling your webpage.
+      </p>
+    </div>
+
+  <div id="Lesson6" class="vertical-tabcontent">
+      <h3 style="color: #FFD700;">Lesson 6: Setting Dimensions</h3>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        CSS can be used to manage dimensions such as visibility, width, height, and more for HTML elements.
+        <br><br>
+        CSS properties for dimensions include:
+        <ol style="color: #FFD700;">
+          <li><strong>Visibility</strong>: Indicates if an element is visible or hidden.</li>
+          <li><strong>Width</strong>: Specifies the width of an element.</li>
+          <li><strong>Height</strong>: Specifies the height of an element.</li>
+          <li><strong>Line-height</strong>: Defines the spacing between lines of text.</li>
+          <li><strong>Max-height</strong>: Sets the maximum height an element can have.</li>
+          <li><strong>Min-height</strong>: Defines the minimum height an element must have.</li>
+          <li><strong>Max-width</strong>: Specifies the maximum width an element can have.</li>
+          <li><strong>Min-width</strong>: Specifies the minimum width an element must have.</li>
+        </ol>
+      </p>
+      <h4 style="color: #FFD700;">Visibility</h4>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        The <strong>visibility</strong> property determines if an element is visible or hidden, but it still takes up space in the layout.
+        <ul style="color: #FFD700;">
+          <li><code>visibility: visible</code> – Default value, makes the element visible.</li>
+          <li><code>visibility: hidden</code> – Hides the element but it still occupies space.</li>
+          <li><code>visibility: collapse</code> – Only for table rows, columns, and flex items; effectively removes the element.</li>
+        </ul>
+      </p>
+      <h4 style="color: #FFD700;">Width & Height</h4>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        <strong>Width</strong> and <strong>Height</strong> properties define the size of an element. You can set fixed dimensions or let the element resize automatically.
+        <ul style="color: #FFD700;">
+          <li><code>width: 200px</code> – Sets the width of the element to 200px.</li>
+          <li><code>height: auto</code> – Sets the height to auto, based on content.</li>
+        </ul>
+      </p>
+      <h4 style="color: #FFD700;">Max & Min Dimensions</h4>
+      <p style="color: white; font-size: 22px; line-height: 1.6;">
+        <strong>Max-width</strong>, <strong>Min-width</strong>, <strong>Max-height</strong>, and <strong>Min-height</strong> properties are used to define the maximum or minimum size of an element.
+        <ul style="color: #FFD700;">
+          <li><code>max-width: 12px</code> – Limits the width to 12px.</li>
+          <li><code>min-width: 12px</code> – Ensures the width is at least 12px.</li>
+          <li><code>max-height: 12px</code> – Limits the height to 12px.</li>
+          <li><code>min-height: 12px</code> – Ensures the height is at least 12px.</li>
+        </ul>
+      </p>
+      <h4 style="color: #FFD700;">Summary:</h4>
+      <p style="color: white; font-size: 22px;">
+        CSS provides several ways to control the dimensions of elements on a webpage. By using properties like <strong>width</strong>, <strong>height</strong>, <strong>visibility</strong>, and their related properties, you can design flexible and responsive layouts.
+      </p>
+    </div>
+</div>
+</div>
+
+
+<div id="AralingPanlipunan" class="tabcontent">
+<h2 style="color: #FFD700; text-align: center; font-size: 40px;">📚 Araling Panlipunan Lessons: Yunit II - Maykroekonomiks </h2>
+
+<button class="accordion">📌 Lesson 1: Demand</button>
+<div class="panel">
+
+<p><strong>Deskripsyon:</strong> Ang demand ay ang dami ng produkto o serbisyo na kaya at handang bilhin ng mamimili sa isang tiyak na presyo.</p>
+
+<p><strong>Batas ng Demand (Ceteris Paribus):</strong> Kapag ang presyo ay tumaas, bababa ang demand. Kapag ang presyo ay bumaba, tataas ang demand.</p>
+
+<p><strong>Substitution Effect:</strong> Kapag ang presyo ng isang produkto ay tumaas, hahanap ang mamimili ng mas murang alternatibo.</p>
+
+<p><strong>Income Effect:</strong> Kapag tumaas ang presyo, parang lumiit ang kita ng mamimili kaya bumababa ang demand.</p>
+
+<p><strong>Mathematical Formula:</strong> Qd = a - bP</p>
+
+<p><strong>Demand Schedule:</strong> Talaan na nagpapakita ng presyo at quantity demanded.</p>
+
+<p><strong>Demand Function:</strong> Qd = f(P)</p>
+
+<p><strong>Demand Curve:</strong> Graph na pababa mula kaliwa-pakanan.</p>
+
+<p><strong>Mga Salik na Nakaaapekto:</strong> Kita, Panlasa, Populasyon, Ekspektasyon, Presyo ng kaugnay na produkto.</p>
+
+<div class="image-row">
+<img src="demand1.png" alt="Demand Image 1">
+<img src="demand2.png" alt="Demand Image 2">
+</div>
+</div>
+
+<button class="accordion">📌 Lesson 2: Supply</button>
+
+<div class="panel">
+
+<p><strong>Deskripsyon:</strong> Dami ng produkto/serbisyo na kayang ipagbili ng producer sa tiyak na presyo.</p>
+
+<p><strong>Batas ng Supply:</strong> Kapag mataas ang presyo, tumataas ang supply; kapag mababa, bumababa ang supply.</p>
+
+<p><strong>Ceteris Paribus:</strong> Ipinapalagay na ang ibang salik ay hindi nagbabago.</p>
+
+<p><strong>Mathematical Formula:</strong> Qs = c + dP</p>
+
+<p><strong>Supply Schedule:</strong> Talaan ng presyo at quantity supplied.</p>
+<p><strong>Supply Function:</strong> Qs = f(P)</p>
+
+<p><strong>Supply Curve:</strong> Graph na pataas mula kaliwa-pakanan.</p>
+
+<p><strong>Mga Salik na Nakaaapekto:</strong> Teknolohiya, Gastos, Ekspektasyon, Bilang ng nagbebenta.</p>
+
+<img src="supply1.jfif" alt="Supply Image 1">
+<img src="supply2.png" alt="Supply Image 2">
+</div>
+
+<button class="accordion">📌 Lesson 3: Price Elasticity</button>
+
+<div class="panel">
+
+<p><strong>Deskripsyon:</strong> Sukatan kung gaano ka-sensitibo ang demand sa pagbabago ng presyo.</p>
+
+<p><strong>Elasticity ng Demand (ED):</strong> ED = % pagbabago sa Qd / % pagbabago sa presyo</p>
+
+<p><strong>Uri ng Elastisidad:</strong></p>
+
+<ul>
+<li><strong>Elastic:</strong> ED > 1</li>
+<li><strong>Di-Elastic:</strong> ED < 1</li>
+<li><strong>Unitary:</strong> ED = 1</li>
+<li><strong>Ganap na Elastik:</strong> ED = ∞</li>
+<li><strong>Ganap na Di-Elastik:</strong> ED = 0</li>
+</ul>
+
+<img src="elasticity1.png" alt="Elasticity Image 1">
+<img src="elasticity2.png" alt="Elasticity Image 2">
+</div>
+
+<button class="accordion">📌 Lesson 4: Market Equilibrium</button>
+
+<div class="panel">
+
+<p><strong>Deskripsyon:</strong> Punto kung saan nagtatagpo ang demand at supply sa isang presyo at quantity.</p>
+
+<p><strong>Equilibrium Price:</strong> Presyong nagbabalanse sa dami ng demand at suplay.</p>
+
+<p><strong>Equilibrium Quantity:</strong> Dami ng produkto na nais bilhin at ibenta sa equilibrium price.</p>
+
+<p><strong>Shortage:</strong> Kapag mas mataas ang demand kaysa supply.</p>
+
+<p><strong>Surplus:</strong> Kapag mas mataas ang supply kaysa demand.</p>
+
+<img src="me1.webp" alt="Market Equilibrium Image 1">
+<img src="me2.avif" alt="Market Equilibrium Image 2">
+</div>
+
+<button class="accordion">📌 Lesson 5: Iba't Ibang Estraktura ng Pamilihan</button>
+
+<div class="panel">
+
+<p><strong>Deskripsyon:</strong> Uri ng pamilihan ayon sa bilang ng producer at katangian ng produkto.</p>
+
+<ul>
+<li><strong>Ganap na Kompetisyon:</strong> Maraming nagbebenta, pare-pareho ang produkto.</li>
+<li><strong>Monopolyo:</strong> Iisa ang producer.</li>
+<li><strong>Oligopolyo:</strong> Iilang producer, nagkokontrol ng presyo.</li>
+<li><strong>Monopolistikong Kompetisyon:</strong> Marami ang nagbebenta, ngunit may pagkakaiba sa produkto.</li>
+
+</ul>
+<img src="ms1.webp" alt="Market Structure Image 1">
+<img src="ms2.jpg" alt="Market Structure Image 2">
+</div>
+
+<button class="accordion">📌 Lesson 6: Gampanin ng Pamahalaan sa Ekonomiya</button>
+<div class="panel">
+
+<p><strong>Deskripsyon:</strong> Layunin ng pamahalaan na mapanatili ang balanse sa ekonomiya sa pamamagitan ng regulasyon.</p>
+
+<p><strong>Price Control:</strong> Pagkontrol ng pamahalaan sa presyo ng mga produkto upang hindi ito magmahal nang sobra.</p>
+
+<p><strong>RA 7581:</strong> Price Act na naglalayong protektahan ang mamimili laban sa pananamantala sa presyo.</p>
+
+<p><strong>Price Ceiling:</strong> Pinakamataas na presyong maaaring singilin.</p>
+
+<p><strong>Price Support:</strong> Suportang presyo para sa mga prodyuser.</p>
+
+<p><strong>Floor Price:</strong> Pinakamababang presyong pinapayagan sa isang produkto.</p>
+
+<img src="pc1.png" alt="Price Control Image 1">
+<img src="pc2.png" alt="Price Control Image 2">
+</div>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+for (let i = 0; i < acc.length; i++) {acc[i].addEventListener("click", function () {
+this.classList.toggle("active");
+var panel = this.nextElementSibling;
+
+if (panel.style.maxHeight) {panel.style.maxHeight = null;} else {
+panel.style.maxHeight = panel.scrollHeight + "px"; }});}
+</script>
+</div>
+</body>
+</html>
